@@ -14,6 +14,7 @@ public class LoginTest extends BaseTests {
         LoginPage loginPage = homePage.clickLogin();
         loginPage.setEmail("geelangtester@gmail.com");
         loginPage.setPassword("321*sdfG");
+
         MyJobsPage myJobPage = loginPage.clickLoginButton();
         assertEquals(myJobPage.getHeading4Text(),
                 "PEKERJAAN AKTIF ANDA",

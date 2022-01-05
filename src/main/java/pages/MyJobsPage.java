@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyJobsPage {
     private WebDriver driver;
@@ -13,6 +15,8 @@ public class MyJobsPage {
         this.driver = driver;
     }
     public String getHeading4Text (){
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(heading4));
         return driver.findElement(heading4).getText();
     }
 
