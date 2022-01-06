@@ -11,16 +11,17 @@ public class MyJobsPage {
     private By menuButton = By.xpath("//div[@class='inline-flex gap-2']");
     private By logoutButton = By.xpath("//div[.='Logout']");
 
-    public MyJobsPage(WebDriver driver){
+    public MyJobsPage(WebDriver driver) {
         this.driver = driver;
     }
-    public String getHeading4Text (){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+    public String getHeading4Text() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(heading4));
         return driver.findElement(heading4).getText();
     }
 
-    public void clickLogOut(){
+    public void clickLogOut() {
         driver.findElement(menuButton).click();
         driver.findElement(logoutButton).click();
     }

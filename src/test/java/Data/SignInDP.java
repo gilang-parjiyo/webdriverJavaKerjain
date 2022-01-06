@@ -9,14 +9,14 @@ public class SignInDP {
 
         data[0][0] = "geelangtester@gmail.com";
         data[0][1] = "321*sdfG";
-        data[0][2] = false;
+        data[0][2] = true;
 
         data[1][0] = "geelangtester@gmail.com";
-        data[1][1] = "321*sdfG";
-        data[1][2] = true;
+        data[1][1] = "password";
+        data[1][2] = false;
 
-        data[2][0] = "admin";
-        data[2][1] = "geelangtester@gmail.com";
+        data[2][0] = "user";
+        data[2][1] = "321*sdfG";
         data[2][2] = false;
 
         return data;
