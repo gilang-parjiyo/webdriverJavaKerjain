@@ -23,4 +23,5 @@ public class LoginPage {
         driver.findElement(loginButton).click();
         return new MyJobsPage(driver);
     }
+
 }

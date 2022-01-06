@@ -7,7 +7,7 @@ import pages.MyJobsPage;
 
 import static org.testng.Assert.assertEquals;
 
-public class LoginTest extends BaseTests {
+public class LoginTest extends BaseTests{
 
     @Test
     public void testSuccessfulLogin(){

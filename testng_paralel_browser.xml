@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="3">
+    <test verbose="2" preserve-order="true" name="Edge" >
+        <parameter name="BrowserType" value="Edge"/>
+        <classes>
+            <class name="Auth.DDT_LoginTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+            <class name="Auth.LoginTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                </methods>
+            </class>
+            <class name="Register.RegisterTest">
+                <methods>
+                    <include name="testSuccessfulRegister"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Chrome" >
+        <parameter name="BrowserType" value="Chrome"/>
+        <classes>
+            <class name="Auth.DDT_LoginTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+            <class name="Auth.LoginTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                </methods>
+            </class>
+            <class name="Register.RegisterTest">
+                <methods>
+                    <include name="testSuccessfulRegister"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Firefox" >
+        <parameter name="BrowserType" value="Firefox"/>
+        <classes>
+            <class name="Auth.DDT_LoginTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+            <class name="Auth.LoginTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                </methods>
+            </class>
+            <class name="Register.RegisterTest">
+                <methods>
+                    <include name="testSuccessfulRegister"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
