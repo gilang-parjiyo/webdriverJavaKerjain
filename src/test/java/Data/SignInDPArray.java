@@ -2,7 +2,7 @@ package Data;
 
 import org.testng.annotations.DataProvider;
 
-public class SignInDP {
+public class SignInDPArray {
     @DataProvider(name = "signIn-provider")
     public static Object[][] signInData() {
         Object[][] data = new Object[3][3];

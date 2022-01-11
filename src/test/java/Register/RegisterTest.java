@@ -1,10 +1,10 @@
 package Register;
 
-import Base.BaseTests;
+import Base.BaseTestsLogin;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
 
-public class RegisterTest extends BaseTests {
+public class RegisterTest extends BaseTestsLogin {
     @Test
     public void testSuccessfulRegister(){
         RegisterPage registerPage = homePage.clickRegister();

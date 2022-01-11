@@ -1,5 +1,6 @@
 package Base;
 
+import Auth.LoginTest;
 import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,7 +18,7 @@ import pages.HomePage;
 import java.io.File;
 import java.io.IOException;
 
-public class BaseTests {
+public class BaseTestsAll {
     private WebDriver driver;
     protected HomePage homePage;
 
@@ -39,6 +40,7 @@ public class BaseTests {
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
 
+
     }
 
     @AfterMethod
@@ -53,7 +55,9 @@ public class BaseTests {
                 e.printStackTrace();
             }
         }
+        driver.get("https://kerjain-team1.herokuapp.com/myjobs");
     }
+
 
     @AfterClass
     public void tearDown() {

@@ -3,4 +3,5 @@
 /workspace.xml
 /resources/screenshots/*
 /resources/reports/*
+/allure-results/*
 

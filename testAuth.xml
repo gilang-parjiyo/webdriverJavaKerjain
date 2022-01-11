@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="ForgotPasswordTest.java">
+        <parameter name="BrowserType" value="chrome"/>
+        <classes>
+            <class name="Auth.ForgotPasswordTest">
+                <methods>
+                    <include name="testForgotPassword"/>
+                </methods>
+            </class>
+            <class name="Auth.LoginTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

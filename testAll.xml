@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Gilang_R831/IdeaProjects/webdriverJavaKerjain/src/test/java/Auth/TestAll.java">
+        <parameter name="BrowserType" value="Edge"></parameter>
+        <classes>
+            <class name="Auth.TestAll">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testSuccessfullyLogOut"/>
+                    <include name="testUpdateProfile"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
