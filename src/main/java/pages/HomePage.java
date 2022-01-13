@@ -29,9 +29,8 @@ public class HomePage {
         return driver.getCurrentUrl();
     }
 
-    public MyJobsPage homePageReturnDriver(){
+    public MyJobsPage myJobsPageReturnDriver(){
         return new MyJobsPage(driver);
     }
-
 
 }

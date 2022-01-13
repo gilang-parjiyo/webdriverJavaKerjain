@@ -24,6 +24,8 @@ public class LoginTest extends BaseTestsLogin {
         assertEquals(myJobPage.getHeading4Text(),
                 "PEKERJAAN AKTIF ANDA",
                 "Heading 4 Is Incorrect");
+
+        System.out.println("User successfully login");
     }
 
 }

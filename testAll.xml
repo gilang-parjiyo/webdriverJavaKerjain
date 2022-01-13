@@ -3,13 +3,14 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
           name="C:/Users/Gilang_R831/IdeaProjects/webdriverJavaKerjain/src/test/java/Auth/TestAll.java">
-        <parameter name="BrowserType" value="Edge"></parameter>
+        <parameter name="BrowserType" value="Chrome"></parameter>
         <classes>
-            <class name="Auth.TestAll">
+            <class name="Regression.RegressionTest">
                 <methods>
                     <include name="testSuccessfulLogin"/>
                     <include name="testSuccessfullyLogOut"/>
                     <include name="testUpdateProfile"/>
+                    <include name="testFilterWorkers"/>
                 </methods>
             </class>
         </classes>

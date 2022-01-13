@@ -8,11 +8,12 @@ import pages.ForgotPasswordPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-@Epic("Kerjain ui automation")
-@Feature("Forgot Password")
+
 public class ForgotPasswordTest extends BaseTestsLogin {
 
     @Test
+    @Epic("Kerjain ui automation")
+    @Feature("Forgot Password")
     @Severity(SeverityLevel.CRITICAL)
     @Story("User should be able receive email forgot password")
     @Description("User send email forgot password")
@@ -26,6 +27,8 @@ public class ForgotPasswordTest extends BaseTestsLogin {
 
         HomePage homePage = forgotPasswordPage.goHomePage();
         Assert.assertEquals(homePage.getLink(), "https://kerjain-team1.herokuapp.com/", "Link is invalid");
+
+        System.out.println("User successfully forget password");
 
     }
 

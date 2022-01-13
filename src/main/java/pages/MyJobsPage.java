@@ -11,13 +11,14 @@ public class MyJobsPage {
     private By menuButton = By.xpath("//div[@class='inline-flex gap-2']");
     private By logoutButton = By.xpath("//div[.='Logout']");
     private By profileButton = By.xpath("//div[.='Setting Profile']");
+    private By workerListingButton = By.cssSelector(".mx-2 > div:nth-of-type(2)");
 
     public MyJobsPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public String getHeading4Text() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(heading4));
         return driver.findElement(heading4).getText();
     }
@@ -42,5 +43,9 @@ public class MyJobsPage {
         return driver.getCurrentUrl();
     }
 
+    public WorkersPage clickWorkerListing(){
+        driver.findElement(workerListingButton).click();
+        return new WorkersPage(driver);
+    }
 
 }

@@ -1,6 +1,5 @@
 package Base;
 
-import Auth.LoginTest;
 import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,7 +17,7 @@ import pages.HomePage;
 import java.io.File;
 import java.io.IOException;
 
-public class BaseTestsAll {
+public class BaseTestsRegression {
     private WebDriver driver;
     protected HomePage homePage;
 
