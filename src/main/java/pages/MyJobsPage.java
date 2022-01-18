@@ -12,15 +12,25 @@ public class MyJobsPage {
     private By logoutButton = By.xpath("//div[.='Logout']");
     private By profileButton = By.xpath("//div[.='Setting Profile']");
     private By workerListingButton = By.cssSelector(".mx-2 > div:nth-of-type(2)");
+    private By workerDashboard = By.xpath("//li[.='MyBoard']");
 
     public MyJobsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String getHeading4Text() {
+    private void waitElement(By locator){
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(heading4));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public String getHeading4Text() {
+        waitElement(heading4);
         return driver.findElement(heading4).getText();
+    }
+
+    public String loadMyJobHire(){
+        waitElement(workerDashboard);
+        return driver.findElement(workerDashboard).getText();
     }
 
     public void clickLogOut() {

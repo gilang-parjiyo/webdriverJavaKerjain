@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Gilang_R831/IdeaProjects/webdriverJavaKerjain/src/test/java/Auth/TestAll.java">
+        <parameter name="BrowserType" value="Chrome"></parameter>
+        <classes>
+            <class name="Register.RegisterTest">
+                <methods>
+                    <include name="testSuccessfulRegister"/>
+                </methods>
+            </class>
+            <class name="Auth.ForgotPasswordTest">
+                <methods>
+                    <include name="testForgotPassword"/>
+                </methods>
+            </class>
+            <class name="Regression.RegressionTest">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testSuccessfulUpdateProfile"/>
+                    <include name="testSuccessfulFilterWorkers"/>
+                    <include name="testSuccessfulCreateContracts"/>
+                    <include name="testSuccessfulLogOut"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

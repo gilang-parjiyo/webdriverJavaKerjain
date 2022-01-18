@@ -11,26 +11,33 @@ public class HomePage {
     private By Register = By.xpath("//button[text()='Join Us']");
 
 
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver) {
         this.driver = driver;
     }
-    public LoginPage clickLogin(){
+
+    public LoginPage clickLogin() {
         driver.findElement(Login).click();
         return new LoginPage(driver);
     }
-    public RegisterPage clickRegister(){
+
+    public RegisterPage clickRegister() {
         driver.findElement(Register).click();
         return new RegisterPage(driver);
     }
 
-    public String getLink(){
+    public String getLink() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(Login));
         return driver.getCurrentUrl();
     }
 
-    public MyJobsPage myJobsPageReturnDriver(){
+    public MyJobsPage myJobsPageReturnDriver() {
         return new MyJobsPage(driver);
     }
+
+    public WorkersPage workersPageReturnDriver(){
+        return new WorkersPage(driver);
+    }
+
 
 }

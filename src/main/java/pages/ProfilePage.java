@@ -23,22 +23,29 @@ public class ProfilePage {
     private By chooseCity = By.cssSelector("[placeholder='Choose a city...']");
     private By updateProfileButton = By.xpath("//button[text()='Update Profile']");
     private By messageSuccessUpdateProfile = By.cssSelector(".text-3xl");
+    private By companyNameField = By.id("companyName");
 
     /**
      * Constructor profile page conatin of driver
+     *
      * @param driver
      */
     public ProfilePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    /**
-     * method action using web driver
-     * @param fullName to insert value string that user want to input
-     */
+    private void waitElement(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void setCompanyName(String name) {
+        waitElement(companyNameField);
+        driver.findElement(companyNameField).clear();
+        driver.findElement(companyNameField).sendKeys(name);
+    }
+
     public void setFullName(String fullName) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(fullNameField));
         driver.findElement(fullNameField).clear();
         driver.findElement(fullNameField).sendKeys(fullName);
     }
@@ -79,8 +86,7 @@ public class ProfilePage {
     }
 
     public String getMessageUpdateProfile() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(messageSuccessUpdateProfile));
+        waitElement(messageSuccessUpdateProfile);
         return driver.findElement(messageSuccessUpdateProfile).getText();
     }
 
@@ -91,6 +97,7 @@ public class ProfilePage {
 
     /**
      * This method wait locator appear than get attribute values
+     *
      * @param locator locator to wait and to get attribute values
      * @return text attribute values
      */
@@ -102,6 +109,7 @@ public class ProfilePage {
 
     /**
      * This method get attribute values of an element or locator
+     *
      * @param locator to get attribute
      * @return text attribute values
      */
@@ -109,13 +117,15 @@ public class ProfilePage {
         return driver.findElement(locator).getAttribute("value");
     }
 
-
     /**
-     *
      * @return text value attribute
      */
+    public String getCompanyName() {
+        return waitElementGetAttribute(companyNameField);
+    }
+
     public String getFullNameText() {
-        return waitElementGetAttribute(fullNameField);
+        return getAttributeValue(fullNameField);
     }
 
     public String getJobSeniority() {
@@ -137,5 +147,6 @@ public class ProfilePage {
     public String getDateOfBirth() {
         return getAttributeValue(dateOfBirth);
     }
+
 
 }

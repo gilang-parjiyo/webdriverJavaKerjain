@@ -2,69 +2,61 @@ package Regression;
 
 import Base.BaseTestsRegression;
 import io.qameta.allure.*;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.*;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
-public class RegressionTest extends BaseTestsRegression {
+import static org.testng.Assert.assertEquals;
+
+public class RegressionHireTest extends BaseTestsRegression {
 
     @Test()
-    @Epic("User should be able login in login page")
+    @Epic("Hire should be able login in login page")
     @Feature("Login")
-    @Description("Test user successful login ")
+    @Description("Test hire successful login ")
     @Severity(SeverityLevel.CRITICAL)
-    public void testSuccessfulLogin() {
+    public void testSuccessfulLoginHire() {
         LoginPage loginPage = homePage.clickLogin();
-        loginPage.setEmail("geelangtester@gmail.com");
-        loginPage.setPassword("321*sdfG");
+        loginPage.setEmail("testhire10@mailinator.com");
+        loginPage.setPassword("Asdf1234!");
+
         MyJobsPage myJobPage = loginPage.clickLoginButton();
-        Assert.assertEquals(myJobPage.getHeading4Text(),
-                "PEKERJAAN AKTIF ANDA",
-                "Heading 4 Is Incorrect");
-        System.out.println("User successfully login");
+        assertEquals(myJobPage.loadMyJobHire(),
+                "MyBoard",
+                "Dashboard hire loaded");
+        System.out.println("hire successfully login");
     }
 
-    @Test(priority = 1, dependsOnMethods = {"testSuccessfulLogin"})
-    @Epic("User should be able to update profile")
+    @Test(priority = 1, dependsOnMethods = {"testSuccessfulLoginHire"})
+    @Epic("hire should be able to update profile")
     @Feature("Update Profile")
-    @Description("Test user successful update profile ")
+    @Description("Test hire successful update profile ")
     @Severity(SeverityLevel.NORMAL)
-    public void testSuccessfulUpdateProfile() {
+    public void testSuccessfulUpdateHireProfile() {
 
         /**
          * Variable in profile page
          */
         String imagePath = "C:/Users/Gilang_R831/IdeaProjects/webdriverJavaKerjain/resources/screenshots/testUpdateProfile.png";
         RandomName randomName = new RandomName();
-        RandomSpeciality randomSpeciality = new RandomSpeciality();
         RandomCity randomCity = new RandomCity();
-        RandomSeniority randomSeniority = new RandomSeniority();
-        RandomRatePerDay randomRatePerDay = new RandomRatePerDay();
-        RandomDOB randomDOB = new RandomDOB();
+        RandomCompanyName randomCompanyName = new RandomCompanyName();
 
         String fullName = randomName.getRandomName();
-        String speciality = randomSpeciality.getRandomJob();
-        String seniority = randomSeniority.getSeniority();
         String city = randomCity.getRandomCity();
-        String rate = randomRatePerDay.getRatePerDay();
+        String company = randomCompanyName.getRandomName();
 
         /**
          * Web driver action in profile page
          */
         MyJobsPage myJobsPage = homePage.myJobsPageReturnDriver();
         ProfilePage profilePage = myJobsPage.clickProfile();
+        profilePage.setCompanyName(company);
         profilePage.setFullName(fullName);
-        profilePage.selectJobSpeciality(speciality);
         profilePage.setDateOfBirth("01-09-1993");
-        profilePage.setJobSeniority(seniority);
-        profilePage.setRatePerDay(rate);
         profilePage.setImageProfile(imagePath);
         profilePage.selectCity(city);
         profilePage.clickUpdateProfileButton();
@@ -74,19 +66,17 @@ public class RegressionTest extends BaseTestsRegression {
          */
         Assert.assertEquals(profilePage.getMessageUpdateProfile(), "Update Profile Success", "Message success invalid");
         profilePage.popUpSuccessDisappear();
+        Assert.assertEquals(profilePage.getCompanyName(), company, "Invalid Company name");
         Assert.assertEquals(profilePage.getFullNameText(), fullName, "Invalid full name");
-        Assert.assertEquals(profilePage.getChooseSpeciality(), speciality, "Invalid speciality");
-        Assert.assertEquals(profilePage.getJobSeniority(), seniority, "Invalid seniority");
-        Assert.assertEquals(profilePage.getRatePerDay(), rate, "Invalid rate");
         Assert.assertEquals(profilePage.getChooseCity(), city, "Invalid city");
 
         System.out.println("Test successfully update profile");
     }
 
-    @Test(priority = 2, dependsOnMethods = {"testSuccessfulLogin"})
-    @Epic("User should be able filter workers")
+    @Test(priority = 2, dependsOnMethods = {"testSuccessfulLoginHire"})
+    @Epic("hire should be able filter workers")
     @Feature("Filter workers")
-    @Description("Test user successful filter workers ")
+    @Description("Test hire successful filter workers ")
     @Severity(SeverityLevel.NORMAL)
     public void testSuccessfulFilterWorkers() {
         MyJobsPage myJobsPage = homePage.myJobsPageReturnDriver();
@@ -132,10 +122,10 @@ public class RegressionTest extends BaseTestsRegression {
 
     }
 
-    @Test(priority = 3, dependsOnMethods = {"testSuccessfulLogin"})
-    @Epic("User should be able create contracts")
+    @Test(priority = 3, dependsOnMethods = {"testSuccessfulLoginHire"})
+    @Epic("hire should be able create contracts")
     @Feature("Recruit workers")
-    @Description("Test user user success recruit workers")
+    @Description("Test  hire success recruit workers")
     @Severity(SeverityLevel.NORMAL)
     public void testSuccessfulCreateContracts() {
         String path = "C:/Users/Gilang_R831/IdeaProjects/webdriverJavaKerjain/resources/data/WhatsapChatBot.pdf";
@@ -149,8 +139,8 @@ public class RegressionTest extends BaseTestsRegression {
         ContractsPage contractsPage = workersPage.clickCheapestContract();
         contractsPage.waitLoadPage();
         contractsPage.attachFile(path);
-        contractsPage.setStartDate("13-01-2022");
-        contractsPage.setDueDate("14-01-2022");
+        contractsPage.setStartDate("20-01-2022");
+        contractsPage.setDueDate("30-01-2022");
         contractsPage.setDescription("Description");
         contractsPage.saveContract();
 
@@ -160,17 +150,17 @@ public class RegressionTest extends BaseTestsRegression {
 
     }
 
-    @Test(priority = 4, dependsOnMethods = {"testSuccessfulLogin"})
-    @Epic("User should be able to log out")
+    @Test(priority = 4, dependsOnMethods = {"testSuccessfulLoginHire"})
+    @Epic("hire should be able to log out")
     @Feature("Log Out")
-    @Description("Test user successful log Out ")
+    @Description("Test hire successful log Out ")
     @Severity(SeverityLevel.NORMAL)
-    public void testSuccessfulLogOut() {
+    public void testSuccessfulHireLogOut() {
         MyJobsPage myJobsPage = homePage.myJobsPageReturnDriver();
         myJobsPage.clickLogOut();
         myJobsPage.waitLogOutDisappear();
         Assert.assertEquals(myJobsPage.getLink(), "https://kerjain-team1.herokuapp.com/", "tst");
-        System.out.println("User successfully logout");
+        System.out.println("hire successfully logout");
     }
 
 }

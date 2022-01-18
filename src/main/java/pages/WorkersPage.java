@@ -19,6 +19,7 @@ public class WorkersPage {
     private By workerCard = By.cssSelector(".grid > div:nth-of-type(1) > .w-full");
     private By sort = By.cssSelector(".rounded-xl > .inline-flex");
     private By cheapest = By.cssSelector(".mt-1.flex > div:nth-of-type(2)");
+    private By recruitFirstCard = By.cssSelector(".grid > div:nth-of-type(1) button:nth-of-type(1)");
 
     public WorkersPage(WebDriver driver) {
         this.driver = driver;
@@ -92,5 +93,11 @@ public class WorkersPage {
         driver.findElement(cheapest).click();
         waitElementDisappear(listWorkers);
 
+    }
+
+    public ContractsPage clickCheapestContract(){
+        waitElement(recruitFirstCard);
+        driver.findElement(recruitFirstCard).click();
+        return new ContractsPage(driver);
     }
 }
